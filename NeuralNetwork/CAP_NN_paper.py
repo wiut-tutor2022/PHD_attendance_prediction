@@ -22,7 +22,7 @@ time_components = ['year', 'month', 'day']
 df[time_components] = scaler.fit_transform(df[time_components])
 
 ###################################
-data_input = df.drop(['Unnamed: 0', 'year', 'date','room_name', 'status', 'year','attendance', 'attendance_by_class', 'date-year', 'date-month', 'date-day','normalized_attendance','class_type_new'], axis=1)  #
+data_input = df.drop([ 'Unnamed: 0',  'date','room_name', 'year','attendance', 'attendance_by_class', 'date-year', 'date-month', 'date-day','normalized_attendance','class_type_new', 'month'], axis=1)  #
 
 print("after drop shape and head")
 print(data_input.head)
@@ -99,28 +99,21 @@ if __name__ == "__main__":
     # user_input_fourteen = str(input("SA2: "))
 
 
-    with open(r'..\Data\output_lecture_seminar_processed3.csv') as csvfile:  # Testing Input Data
+    with open(r'..\Data\output_lecture_seminar_processed6.csv') as csvfile:  # Testing Input Data
         reader = csv.DictReader(csvfile)
         for row in reader:
-            # print(row['date'])
-            #date = datetime.datetime(row['date'])
-            class_type = int(row['class_type'])
-            faculty = int(row['faculty'])
-            school = int(row['school'])
-            enrollment = int(row['enrollment'])
-            class_duration = int(row['class_duration'])  # time variable
-            degree = int(row['degree'])
-            status = int(row['status'])
-            joint = int(row['joint'])
             week = int(row['week'])
             day = int(row['day'])
             time_of_day = int(row['time_of_day'])
-            # semester = str(row['semester'])
-            #room_name = int(row['room_name'])
-           # date_year = int(row['date-year'])
-            #date_month = int(row['date-month'])
-            #date_day = int(row['date-day'])
-            #normalized_attendance = int(row['normalized_attendance'])
+            class_type = int(row['class_type'])
+            faculty = int(row['faculty'])
+            school = int(row['school'])
+            joint = int(row['joint'])
+            degree = int(row['degree'])
+            class_duration = int(row['class_duration'])  # time variable
+            enrollment = int(row['enrollment'])
+            status = int(row['status'])
+
 
 print("Attributes predicting attendance")
 
@@ -130,14 +123,13 @@ print("Faculty*: ", faculty, )
 print("Enrollment*", enrollment, )
 print("School* ", school, )
 print("Degree* ", degree, )
-print("Status* (open or full) ", status, )
 print("Time of the day: ", time_of_day, )
 print("Day", day, )
 print("Week ", week, )
 print("Enrollment", enrollment)
 
 final_result = neural_network.think(np.array(
-    [class_type, faculty, school, enrollment, class_duration, degree, class_type, joint, week, day,  time_of_day
+    [week, day, time_of_day, class_type, faculty, school, joint, degree, class_duration, enrollment, status,
      ])),
 # 11 inputs listed above
 
