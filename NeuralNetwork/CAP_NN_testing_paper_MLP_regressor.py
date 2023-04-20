@@ -1,6 +1,5 @@
 '''
-MLP classification is based on CAP_NN_paper.py?
-normalized attendance is used as data output, Y
+MLP regressor is used
 
 '''
 import pandas as pd
@@ -17,7 +16,7 @@ from NeuralNetwork.CAP_NN_testing_MLP import classifier
 
 df = pd.read_csv(r'..\Data\output_lecture_seminar_processed3.csv', parse_dates=['date'])
 X = df.drop(['Unnamed: 0', 'year', 'date','room_name', 'status', 'year','attendance', 'attendance_by_class', 'date-year', 'date-month', 'date-day','normalized_attendance','class_type_new',], axis=1)  #
-y = df['normalized_attendance'] # same that is set as y = data_output in CAP_NN_paper.py .
+y = df['normalized_attendance']
 
 #Data split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.90)

@@ -7,9 +7,6 @@ from sklearn import tree
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix
 # load dataset
-#pima = pd.read_csv('results_output_lecture_seminar_processed.csv')
-#pima.head()
-#df = pd.read_csv('results_output_lecture_seminar_processed_old.csv', parse_dates=['date'])
 df = pd.read_csv(r'..\Data\output_lecture_seminar_processed.csv', parse_dates=['date'])
 df.head()
 #split dataset in features and target variable

@@ -1,6 +1,5 @@
 '''
-MLP classification is based on CAP_NN_new.py?
-normalized attendance is used as data output, Y
+
 
 '''
 import pandas as pd
